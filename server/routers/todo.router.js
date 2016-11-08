@@ -6,7 +6,14 @@ var bodyParser = require('body-parser');
 router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
-router.get('/todos', function(req, res){});
+router.get('/todos', function(req, res){
+  Todo.find(function (err, todos) {
+    if(err) {
+      return console.err(err);
+    }
+    console.log(todos);
+  });
+});
 router.get('/todos/:id', function (req, res){});
 
 router.post('/todos', function(req, res){

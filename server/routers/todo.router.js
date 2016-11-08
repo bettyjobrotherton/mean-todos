@@ -7,11 +7,15 @@ router.use(bodyParser.json());
 router.use(bodyParser.urlencoded({extended: true}));
 
 router.get('/todos', function(req, res){
-  Todo.find(function (err, todos) {
+  Todo.find(function (err, todo) {
     if(err) {
-      return console.err(err);
+      res.status(500).json({
+        err:err
+      });
     }
-    console.log(todos);
+    res.status(200).json({
+      todo: todo
+    });
   });
 });
 router.get('/todos/:id', function (req, res){});

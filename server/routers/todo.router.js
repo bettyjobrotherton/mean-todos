@@ -18,7 +18,18 @@ router.get('/todos', function(req, res){
     });
   });
 });
-router.get('/todos/:id', function (req, res){});
+router.get('/todos/:id', function (req, res){
+  Todo.find({__id}, function (err, newTodo){
+    if(err) {
+      res.status(500).json({
+        err: err
+      });
+    }
+    res.send(200).json({
+      todo: newTodo
+    });
+  });
+});
 
 router.post('/todos', function(req, res){
   var todo = new Todo(req.body);

@@ -12,10 +12,11 @@ router.get('/todos', function(req, res){
       res.status(500).json({
         err: err
       });
+    } else {
+      res.status(200).json({
+        todos: foundTodos
+      });
     }
-    res.status(200).json({
-      todos: foundTodos
-    });
   });
 });
 
@@ -25,10 +26,11 @@ router.get('/todos/:id', function (req, res){
       res.status(500).json({
         err: err
       });
+    } else {
+      res.status(200).json({
+        todo: foundTodo
+      });
     }
-    res.status(200).json({
-      todo: foundTodo
-    });
   });
 });
 
@@ -38,10 +40,11 @@ router.get('/todos/description/:desc', function(req, res){
       res.status(500).json({
         err: err
       });
+    } else {
+      res.status(200).json({
+        todos: foundTodos
+      });
     }
-    res.status(200).json({
-      todos: foundTodos
-    });
   });
 });
 
@@ -52,10 +55,11 @@ router.post('/todos', function(req, res){
       res.status(500).json({
         err: err
       });
+    } else {
+      res.status(201).json({
+        msg: 'Successfully created todo'
+      });
     }
-    res.status(201).json({
-      msg: 'Successfully created todo'
-    });
   });
 });
 
@@ -65,10 +69,11 @@ router.put('/todos/:id', function(req, res){
       res.status(500).json({
         err: err
       });
+    } else {
+      res.status(200).json({
+        msg: oldTodo
+      });
     }
-    res.status(200).json({
-      msg: oldTodo
-    });
   });
 });
 
@@ -78,10 +83,11 @@ router.delete('/todos/:id', function(req, res){
       res.status(500).json({
         err: err
       });
+    } else {
+      res.status(200).json({
+        msg: deletedTodo
+      });
     }
-    res.status(200).json({
-      msg: deletedTodo
-    });
   });
 });
 

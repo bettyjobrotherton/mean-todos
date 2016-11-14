@@ -51,8 +51,14 @@
            });
     }
 
-    function deleteOneTodo(index, todo){
-
+    function deleteOneTodo(index, deletedTodo){
+      $http.delete('/todos/' + deletedTodo._id)
+           .then(function(){
+             todos.splice(index, 1);
+           })
+           .catch(function(err){
+             console.log(err);
+           });
     }
   }
 }());
